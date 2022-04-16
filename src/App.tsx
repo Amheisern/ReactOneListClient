@@ -21,7 +21,7 @@ export function App() {
     // This is the async function inside the function
     async function fetchListOfItems() {
       const response = await axios.get(
-        'https://one-list-api.herokuapp.com/items?access_token=cohort22'
+        'https://one-list-api.herokuapp.com/items?access_token=cohort21'
       )
       if (response.status === 200) {
         setTodoItems(response.data)
