@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import logo from './images/sdg-logo.png'
 
 export function App() {
@@ -13,6 +14,20 @@ export function App() {
       complete: false,
     },
   ])
+  // We cannot use an async function directly in useEffect
+  // The solution is to define the async function INSIDE and then
+  // call it
+  useEffect(function () {
+    async function fetchListOfItems() {
+      const response = await axios.get(
+        'https://one-list-api.herokuapp.com/items?access_token=cohort22'
+      )
+      if (response.status === 200) {
+        console.log(response.data)
+      }
+    }
+  }, [])
+
   return (
     <div className="app">
       <header>
