@@ -37,10 +37,14 @@ export function App() {
       { item: { text: newTodoText } }
     )
     if (response.status === 201) {
-      const newTodo = response.data
-      // Create a new array by *spreading* the old list and putting our new item at the end. Use [newTodo, ...todoItems] to *prepend* the new item
-      const newTodoItems = [...todoItems, newTodo]
-      setTodoItems(newTodoItems)
+      const refreshTodoResponse = await axios.get(
+        'https://one-list-api.herokuapp.com/items?access_token=cohort21'
+      )
+      setTodoItems(refreshTodoResponse.data)
+      // const newTodo = response.data
+      // // Create a new array by *spreading* the old list and putting our new item at the end. Use [newTodo, ...todoItems] to *prepend* the new item
+      // const newTodoItems = [...todoItems, newTodo]
+      // setTodoItems(newTodoItems)
     }
   }
   return (
