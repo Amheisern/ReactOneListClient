@@ -12,6 +12,7 @@ type TodoItemType = {
 
 export function App() {
   const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
+  const [newTodoText, setNewTodoText] = useState('')
   // We cannot use an async function directly in useEffect
   // The solution is to define the async function INSIDE and then
   // call it
@@ -29,7 +30,16 @@ export function App() {
     }
     fetchListOfItems()
   }, [])
-
+  async function handleCreateNewTodoItem() {
+    // Update handleCreateNewTodoItem to submit
+    const response = await axios.post(
+      'https://one-list-api.herokuapp.com/items?access_token=cohort21',
+      { item: { text: newTodoText } }
+    )
+    if (response.status === 201) {
+      console.log(response.data)
+    }
+  }
   return (
     <div className="app">
       <header>
@@ -48,8 +58,22 @@ export function App() {
             )
           })}
         </ul>
-        <form>
-          <input type="text" placeholder="Whats up?" />
+        <form
+          onSubmit={function (event) {
+            // Don't do the normal form submit (which would cause the page to refresh)
+            // since we are going to do our own thing
+            event.preventDefault()
+            handleCreateNewTodoItem()
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Whats up?"
+            value={newTodoText}
+            onChange={function (event) {
+              setNewTodoText(event.target.value)
+            }}
+          />
         </form>
       </main>
       <footer>
