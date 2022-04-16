@@ -105,22 +105,24 @@ type TodoItemProps = {
   reloadItems: () => void
 }
 export function TodoItem(props: TodoItemProps) {
+  //destructuring to remove repeated use of props.
+  const { todoItem, reloadItems } = props
   async function toggleCompleteStatus() {
     //This is the style often used for boolean or toggleable values
     const response = await axios.put(
-      `https://one-list-api.herokuapp.com/items/${props.todoItem.id}?access_token=cohort21`,
-      { item: { complete: !props.todoItem.complete } }
+      `https://one-list-api.herokuapp.com/items/${todoItem.id}?access_token=cohort21`,
+      { item: { complete: todoItem.complete } }
     )
     if (response.status === 200) {
-      props.reloadItems()
+      reloadItems()
     }
   }
   return (
     <li
-      className={props.todoItem.complete ? 'completed' : ''}
+      className={todoItem.complete ? 'completed' : ''}
       onClick={toggleCompleteStatus}
     >
-      {props.todoItem.text}
+      {todoItem.text}
     </li>
   )
 }
