@@ -40,18 +40,19 @@ export function App() {
       { item: { text: newTodoText } }
     )
     if (response.status === 201) {
-      const refreshTodoResponse = await axios.get(
-        'https://one-list-api.herokuapp.com/items?access_token=cohort21'
-      )
-      if (refreshTodoResponse.status === 200) {
-        setTodoItems(refreshTodoResponse.data)
-        //Clears the input field when submit is successful
-        setNewTodoText('')
-        // const newTodo = response.data
-        // // Create a new array by *spreading* the old list and putting our new item at the end. Use [newTodo, ...todoItems] to *prepend* the new item
-        // const newTodoItems = [...todoItems, newTodo]
-        // setTodoItems(newTodoItems)
-      }
+      loadAllTheItems()
+      // const refreshTodoResponse = await axios.get(
+      // 'https://one-list-api.herokuapp.com/items?access_token=cohort21'
+      // )
+      // if (refreshTodoResponse.status === 200) {
+      // setTodoItems(refreshTodoResponse.data)
+      //Clears the input field when submit is successful
+      // setNewTodoText('')
+      // const newTodo = response.data
+      // // Create a new array by *spreading* the old list and putting our new item at the end. Use [newTodo, ...todoItems] to *prepend* the new item
+      // const newTodoItems = [...todoItems, newTodo]
+      // setTodoItems(newTodoItems)
+      // }
     }
   }
   return (
@@ -107,7 +108,7 @@ export function TodoItem(props: TodoItemProps) {
   async function toggleCompleteStatus() {
     //This is the style often used for boolean or toggleable values
     const response = await axios.put(
-      `https://one-list-api.herokuapp.com/items/${props.todoItem.id}?access_token=cohort42`,
+      `https://one-list-api.herokuapp.com/items/${props.todoItem.id}?access_token=cohort21`,
       { item: { complete: !props.todoItem.complete } }
     )
     if (response.status === 200) {
