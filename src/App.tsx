@@ -2,8 +2,16 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import logo from './images/sdg-logo.png'
 
+type TodoItemType = {
+  id: number
+  text: string
+  complete: boolean
+  updated_at: Date
+  created_at: Date
+}
+
 export function App() {
-  const [todoItems, setTodoItems] = useState([])
+  const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
   // We cannot use an async function directly in useEffect
   // The solution is to define the async function INSIDE and then
   // call it
