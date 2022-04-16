@@ -16,7 +16,7 @@ export function App() {
   // We cannot use an async function directly in useEffect
   // The solution is to define the async function INSIDE and then
   // call it
-  useEffect(function () {
+  function loadAllTheItems() {
     //
     //
     // This is the async function inside the function
@@ -29,7 +29,10 @@ export function App() {
       }
     }
     fetchListOfItems()
-  }, [])
+  }
+
+  useEffect(loadAllTheItems, [])
+
   async function handleCreateNewTodoItem() {
     // Update handleCreateNewTodoItem to submit
     const response = await axios.post(
@@ -60,12 +63,11 @@ export function App() {
         <ul>
           {todoItems.map(function (todoItem) {
             return (
-              <li
+              <TodoItem
                 key={todoItem.id}
-                className={todoItem.complete ? 'completed' : undefined}
-              >
-                {todoItem.text}
-              </li>
+                todoItem={todoItem}
+                reloadItems={loadAllTheItems}
+              />
             )
           })}
         </ul>
@@ -94,5 +96,30 @@ export function App() {
         <p>&copy; 2020 Suncoast Developers Guild</p>
       </footer>
     </div>
+  )
+}
+
+type TodoItemProps = {
+  todoItem: TodoItemType
+  reloadItems: () => void
+}
+export function TodoItem(props: TodoItemProps) {
+  async function toggleCompleteStatus() {
+    //This is the style often used for boolean or toggleable values
+    const response = await axios.put(
+      `https://one-list-api.herokuapp.com/items/${props.todoItem.id}?access_token=cohort42`,
+      { item: { complete: !props.todoItem.complete } }
+    )
+    if (response.status === 200) {
+      props.reloadItems()
+    }
+  }
+  return (
+    <li
+      className={props.todoItem.complete ? 'completed' : ''}
+      onClick={toggleCompleteStatus}
+    >
+      {props.todoItem.text}
+    </li>
   )
 }
