@@ -37,7 +37,10 @@ export function App() {
       { item: { text: newTodoText } }
     )
     if (response.status === 201) {
-      console.log(response.data)
+      const newTodo = response.data
+      // Create a new array by *spreading* the old list and putting our new item at the end. Use [newTodo, ...todoItems] to *prepend* the new item
+      const newTodoItems = [...todoItems, newTodo]
+      setTodoItems(newTodoItems)
     }
   }
   return (
