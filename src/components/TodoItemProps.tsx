@@ -23,12 +23,13 @@ export function TodoItem({
       reloadItems()
     }
   }
-  return (
+  return (<>
     <li
       className={complete ? 'completed' : undefined}
       onClick={toggleCompleteStatus}
     >
       {text}
     </li>
+    </>
   )
 }
