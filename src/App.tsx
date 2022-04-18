@@ -19,8 +19,11 @@ export function App() {
       </header>
       <main>
         <Routes>
-          <Route exact={true} path="/">
+          <Route path="/">
             <TodoList />
+          </Route>
+          <Route path="/items/:id">
+            <p>This would be the details of item 42!</p>
           </Route>
           <Route path="*">
             <p>Ooops, that URL is unknown</p>
