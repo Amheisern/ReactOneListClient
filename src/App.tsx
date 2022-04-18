@@ -18,8 +18,6 @@ export function App() {
   // The solution is to define the async function INSIDE and then
   // call it
   function loadAllTheItems() {
-    //
-    //
     // This is the async function inside the function
     async function fetchListOfItems() {
       const response = await axios.get(
