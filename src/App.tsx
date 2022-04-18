@@ -1,7 +1,8 @@
 import React from 'react'
 import logo from './images/sdg-logo.png'
-import { TodoList } from './components/TodoList'
-import { Routes, Route } from 'react-router-dom'
+import { TodoList } from './pages/TodoList'
+import { Routes, Route } from 'react-router'
+import { TodoItemPage } from './pages/TodoItemPage'
 
 export type TodoItemType = {
   id: number
@@ -23,7 +24,8 @@ export function App() {
             <TodoList />
           </Route>
           <Route path="/items/:id">
-            <p>This would be the details of item 42!</p>
+            This would be the details of item 42!
+            <TodoItemPage />
           </Route>
           <Route path="*">
             <p>Ooops, that URL is unknown</p>
