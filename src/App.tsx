@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from './images/sdg-logo.png'
-import { TodoList } from './TodoList'
+import { TodoList } from './components/TodoList'
 
 export type TodoItemType = {
   id: number

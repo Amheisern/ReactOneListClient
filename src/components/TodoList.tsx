@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { TodoItem } from './components/TodoItemProps';
-import { TodoItemType } from './App';
+import { TodoItem } from './TodoItemProps';
+import { TodoItemType } from '../App';
 
 export function TodoList() {
   const [todoItems, setTodoItems] = useState<TodoItemType[]>([]);
