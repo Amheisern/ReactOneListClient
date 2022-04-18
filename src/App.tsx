@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from './images/sdg-logo.png'
 import { TodoList } from './components/TodoList'
+import { Routes, Route } from 'react-router-dom'
 
 export type TodoItemType = {
   id: number
@@ -17,7 +18,11 @@ export function App() {
         <h1>One List</h1>
       </header>
       <main>
-        <TodoList/>
+        <Routes>
+          <Route path="/">
+            <TodoList />
+          </Route>
+        </Routes>
       </main>
       <footer>
         <p>
@@ -28,4 +33,3 @@ export function App() {
     </div>
   )
 }
-
