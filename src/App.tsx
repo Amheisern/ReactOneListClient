@@ -5,11 +5,11 @@ import { Routes, Route } from 'react-router'
 import { TodoItemPage } from './pages/TodoItemPage'
 
 export type TodoItemType = {
-  id: number
+  id: number | undefined
   text: string
   complete: boolean
-  updated_at: Date
-  created_at: Date
+  updated_at: Date | undefined
+  created_at: Date | undefined
 }
 
 export function App() {
