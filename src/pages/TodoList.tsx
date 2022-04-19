@@ -47,7 +47,7 @@ export function TodoList() {
     }
   }
 
-  return (<>
+  return (<React.Fragment>
     <ul>
       {todoItems.map(function (todoItem) {
         return (
@@ -74,5 +74,5 @@ export function TodoList() {
           setNewTodoText(event.target.value);
         }} />
     </form>
-  </>);
+  </React.Fragment>);
 }

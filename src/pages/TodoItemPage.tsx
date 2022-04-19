@@ -27,7 +27,12 @@ export function TodoItemPage() {
     },
     [params.id]
   )
-
+async function deleteTodoItem() {
+  await axios.delete(
+    `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort42`
+  )
+  // Need to redirect back to the main page!
+}
   return (
     <>
       <div>

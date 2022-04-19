@@ -20,15 +20,12 @@ export function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/">
-            <TodoList />
+          <Route path="/" element={<TodoList />}>
           </Route>
-          <Route path="/items/:id">
+          <Route path="/items/:id" element={<TodoItemPage />}>
             This would be the details of item 42!
-            <TodoItemPage />
           </Route>
           <Route path="*">
-            <p>Ooops, that URL is unknown</p>
           </Route>
         </Routes>
       </main>
