@@ -5,7 +5,7 @@ import { TodoItemType } from '../App'
 
 
 export function TodoItemPage() {
-  const history = useHistory()
+  // const history = useHistory()
   const params = useParams<{ id: string }>()
   const [todoItem, setTodoItem] = useState<TodoItemType>({
     id: undefined,
@@ -36,7 +36,7 @@ async function deleteTodoItem() {
   // Need to redirect back to the main page!
   if (response.status === 204) {
     // Send the user back to the homepage
-    history.push('/')
+    // history.push('/')
   }
 }
   return (
