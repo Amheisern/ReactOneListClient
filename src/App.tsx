@@ -3,6 +3,7 @@ import logo from './images/sdg-logo.png'
 import { TodoList } from './pages/TodoList'
 import { Routes, Route } from 'react-router'
 import { TodoItemPage } from './pages/TodoItemPage'
+import { Link } from 'react-router-dom'
 
 export type TodoItemType = {
   id: number | undefined
@@ -31,7 +32,9 @@ export function App() {
       </main>
       <footer>
         <p>
+          <Link to="/">
           <img src={logo} height="42" alt="logo" />
+          </Link>
         </p>
         <p>&copy; 2020 Suncoast Developers Guild</p>
       </footer>
