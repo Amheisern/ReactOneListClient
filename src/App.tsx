@@ -33,7 +33,7 @@ export function App() {
       <footer>
         <p>
           <Link to="/">
-          <img src={logo} height="42" alt="logo" />
+          <img src={logo} height="42" alt="Home" />
           </Link>
         </p>
         <p>&copy; 2020 Suncoast Developers Guild</p>
