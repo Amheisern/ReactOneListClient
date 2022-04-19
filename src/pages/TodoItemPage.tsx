@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate} from 'react-router'
 import { Link } from 'react-router-dom'
 import { TodoItemType } from '../App'
 
 
 export function TodoItemPage() {
-  // const history = useHistory()
+   const history = useNavigate()
   const params = useParams<{ id: string }>()
   const [todoItem, setTodoItem] = useState<TodoItemType>({
     id: undefined,
@@ -37,11 +37,11 @@ async function deleteTodoItem() {
   // Need to redirect back to the main page!
   if (response.status === 204) {
     // Send the user back to the homepage
-    // history.push('/')
+     history('/')
   }
 }
 if (!todoItem.id) {
-  return <div>Loading...</div>
+  return null
 }
   return (
     <div>
