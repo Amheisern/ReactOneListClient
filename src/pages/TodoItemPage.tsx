@@ -40,6 +40,9 @@ async function deleteTodoItem() {
     // history.push('/')
   }
 }
+if (!todoItem.id) {
+  return <div>Loading...</div>
+}
   return (
     <div>
       <p>
