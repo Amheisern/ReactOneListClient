@@ -24,14 +24,12 @@ export function TodoItem({
       reloadItems()
     }
   }
-  return (<>
+  return (
     <li
-      className={complete ? 'completed' : undefined}
-      onClick={toggleCompleteStatus}
-    >
-      {text}
+      className={complete ? 'completed' : undefined} >
+      <span onClick={toggleCompleteStatus}>{text}</span>
       <Link to={`/items/${id}`}>Show</Link>
     </li>
-    </>
+    
   )
 }
