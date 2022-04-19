@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { TodoItemType } from '../App'
 
+
 export function TodoItemPage() {
+  const history = useHistory()
   const params = useParams<{ id: string }>()
   const [todoItem, setTodoItem] = useState<TodoItemType>({
     id: undefined,
@@ -28,19 +30,25 @@ export function TodoItemPage() {
     [params.id]
   )
 async function deleteTodoItem() {
-  await axios.delete(
+  const response = await axios.delete(
     `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort42`
   )
   // Need to redirect back to the main page!
+  if (response.status === 204) {
+    // Send the user back to the homepage
+    history.push ('/')
+  }
 }
   return (
-    <>
       <div>
         <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
         <p>Created: {todoItem.created_at}</p>
         <p>Updated: {todoItem.updated_at}</p>
-        <button>Delete</button>
+        <button onClick={deleteTodoItem}>Delete</button>
       </div>
-    </>
   )
 }
+function useHistory() {
+  throw new Error('Function not implemented.')
+}
+
