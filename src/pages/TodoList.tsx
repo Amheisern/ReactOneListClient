@@ -4,8 +4,8 @@ import { TodoItem } from '../components/TodoItemProps';
 import { TodoItemType } from '../App';
 
 export function TodoList() {
-  const [todoItems, setTodoItems] = useState<TodoItemType[]>([]);
-  const [newTodoText, setNewTodoText] = useState('');
+  const [todoItems, setTodoItems] = useState<TodoItemType[]>([])
+  const [newTodoText, setNewTodoText] = useState('')
   // We cannot use an async function directly in useEffect
   // The solution is to define the async function INSIDE and then
   // call it
@@ -31,7 +31,7 @@ export function TodoList() {
       { item: { text: newTodoText } }
     );
     if (response.status === 201) {
-      loadAllTheItems();
+      loadAllTheItems()
     }
   }
 
